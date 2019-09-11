@@ -27,7 +27,7 @@ def create_words_probabilities(correct_word, words):
     # 単語を正規化
     fixed_words = {str(word):unicodedata.normalize('NFKC', word) for word in words}
     # 類似確率を求める
-    probabilities = [difflib.SequenceMatcher(None, correct_word, word).ratio() for word in fixed_words.values()]
+    probabilities = ['{:.2%}'.format(difflib.SequenceMatcher(None, correct_word, word).ratio()) for word in fixed_words.values()]
 
     keys = list(fixed_words.keys())
     result = list(zip(keys, probabilities))
